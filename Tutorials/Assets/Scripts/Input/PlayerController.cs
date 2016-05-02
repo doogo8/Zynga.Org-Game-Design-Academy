@@ -3,11 +3,13 @@ using System.Collections;
 
 /// <summary>
 /// Physics player controller in 3D.
-/// Can move left or right or jump.
+/// Handles move, turn, and jump.
 /// 
 /// Author: rhagan
 /// </summary>
 public class PlayerController : MonoBehaviour {
+
+	#region Inputs
 
 	/// <summary>
 	/// The jump input key.
@@ -75,15 +77,24 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField]
 	private bool strafe = false;
 
+	#endregion Inputs
+
+
+	/// <summary>
+	/// Start() is always called first when an object is created
+	/// </summary>
 	void Start() {
 		if (_body == null) {
-			// set to this rigidbody if unset
+			// Set to this rigidbody if unset
 			_body = GetComponent<Rigidbody>();
 		}
 	}
 
-	// Update is called once per frame
+	/// <summary>
+	/// Update() is called once per frame
+	/// </summary>
 	void Update () {
+		// Handle moving/turning left and right
 		if (strafe) {
 			if (Input.GetKey(_leftKey)) {
 				_body.AddForce(transform.right * -_turnForce * Time.deltaTime);
@@ -99,12 +110,15 @@ public class PlayerController : MonoBehaviour {
 				transform.Rotate(0, _turnForce * Time.deltaTime, 0);
 			}
 		}
+		// Handle moving forward
 		if (Input.GetKey(_upKey)) {
 			_body.AddForce(transform.forward * _force * Time.deltaTime);
 		}
+		// Handle moving backward
 		if (Input.GetKey(_downKey)) {
 			_body.AddForce(transform.forward * -_force * Time.deltaTime);
 		}
+		// Handle jumping
 		if (Input.GetKeyDown(_jumpKey) && Mathf.Abs(_body.velocity.y) < 0.01f) {
 			_body.AddForce(0, _jumpForce * Time.deltaTime, 0);
 			_body.AddTorque(_jumpTorque, _jumpTorque, _jumpTorque);
