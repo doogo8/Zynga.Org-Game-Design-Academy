@@ -7,7 +7,7 @@
 /// 
 /// Author: rhagan
 /// </summary>
-class PlayerController extends MonoBehaviour {
+class PlayerControllerJs extends MonoBehaviour {
 
 	/// <summary>
 	/// The jump input key.

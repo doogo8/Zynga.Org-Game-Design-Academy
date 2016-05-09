@@ -206,13 +206,14 @@ class ActionInputSimpleJs extends MonoBehaviour {
 
 	private function RunActions () : void {
 		for( var act:BaseActionJs in actions) {
-			RunAction(_actions.GetId(act));
+			act.CheckRun(gameObject);
+//			RunAction(_actions.GetId(act));
 		}
 	}
 
 	private function RunAction ( id : int  ) : void {
 //		if (ActionRunner.Instance == null) {
-			_actions.GetAction(id).CheckRun(gameObject);
+//			_actions.GetAction(id).CheckRun(gameObject);
 //		} else {
 //			ActionRunner.Instance.RunAction(gameObject, _actions.GetAction(id));
 //		}

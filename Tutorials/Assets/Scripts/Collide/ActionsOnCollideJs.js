@@ -7,7 +7,7 @@
 /// 
 /// @author rhagan
 /// </summary>
-class ActionsOnCollideJs extends BaseCollide {
+class ActionsOnCollideJs extends BaseCollideJs {
 
 	/// <summary>
 	/// Called on starting collision.

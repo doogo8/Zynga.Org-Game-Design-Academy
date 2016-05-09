@@ -7,9 +7,9 @@
 /// </summary>
 class ActionsJs extends MonoBehaviour {
 
-	var _actions : BaseActionJs[];
+	var _actions : Component[];
 
-	public function GetActions() : BaseActionJs[] {
+	public function GetActions() : Component[] {
 		 return _actions;
 	}
 
@@ -18,13 +18,12 @@ class ActionsJs extends MonoBehaviour {
 	}
 
 	function GetAction ( id : int  ) : BaseActionJs {
-		return (_actions.Count > id && id >= 0) ? _actions[id] : null;
+		return (_actions.Length > id && id >= 0) ? _actions[id] : null;
 	}
 
-	// TODO: rhagan
-//	function GetId ( act : BaseActionJs  ) : int {
-//		return _actions.IndexOf(act);
-//	}
+	function GetId ( act : Component  ) : int {
+		return ArrayUtility.IndexOf(_actions, act);
+	}
 //
 //	static function GetId ( obj : GameObject ,   act : BaseActionJs  ) : int {
 //		 var actions : ActionsJs= obj.GetComponent(ActionsJs);

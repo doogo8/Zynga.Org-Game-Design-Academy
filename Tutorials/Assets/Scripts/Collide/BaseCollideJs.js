@@ -7,13 +7,12 @@
 /// 
 /// @author rhagan
 /// </summary>
-class BaseCollide extends MonoBehaviour {
+class BaseCollideJs extends MonoBehaviour {
 	
 	/// <summary>
 	/// List of actions to run.
 	/// </summary>
-	// TODO: rhagan
-//	var actions:BaseAction[];
+	var actions:BaseActionJs[];
 	
 	/// <summary>
 	/// If true, triggers on the other GameObject.
@@ -64,12 +63,12 @@ class BaseCollide extends MonoBehaviour {
 //		if (!isCreator && (!requireOppositeTeam || Team.IsDifferentTeam(Team.GetTeam(gameObject), Team.GetTeam(other))) && 
 //		    	(string.IsNullOrEmpty(requiredTag) || other.CompareTag(requiredTag))) 
 //		{
-//			if (onOther) {
-//				obj = other;
-//			}
-//			for (var action:BaseAction in actions) {
-//				action.CheckRun(obj);
-//			}
+			if (onOther) {
+				obj = other;
+			}
+			for (var action:BaseActionJs in actions) {
+				action.CheckRun(obj);
+			}
 //		}
 	}
 
